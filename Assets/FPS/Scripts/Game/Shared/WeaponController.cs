@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Unity.FPS.Game
+
 {
     public enum WeaponShootType
     {
@@ -134,7 +135,7 @@ namespace Unity.FPS.Game
         public event Action OnShootProcessed;
 
         int m_CarriedPhysicalBullets;
-        float m_CurrentAmmo;
+        public float m_CurrentAmmo;
         float m_LastTimeShot = Mathf.NegativeInfinity;
         public float LastChargeTriggerTimestamp { get; private set; }
         Vector3 m_LastMuzzlePosition;
@@ -162,6 +163,10 @@ namespace Unity.FPS.Game
         const string k_AnimAttackParameter = "Attack";
 
         private Queue<Rigidbody> m_PhysicalAmmoPool;
+
+        // OSC stuff
+        public GameFlowManager GameFlow;
+
 
         void Awake()
         {
@@ -194,6 +199,9 @@ namespace Unity.FPS.Game
                     m_PhysicalAmmoPool.Enqueue(shell.GetComponent<Rigidbody>());
                 }
             }
+
+            // OSC stuff
+            GameFlow = GameObject.FindObjectOfType<GameFlowManager>();
         }
 
         public void AddCarriablePhysicalBullets(int count) => m_CarriedPhysicalBullets = Mathf.Max(m_CarriedPhysicalBullets + count, MaxAmmo);
@@ -239,6 +247,14 @@ namespace Unity.FPS.Game
             UpdateAmmo();
             UpdateCharge();
             UpdateContinuousShootSound();
+
+            if (this.gameObject.name == "Weapon_Blaster(Clone)")
+            {
+                GameFlow.ammoRatio = CurrentAmmoRatio;
+                // Debug.Log("Prefab ammo ratio: " + CurrentAmmoRatio);
+            }
+
+
 
             if (Time.deltaTime > 0)
             {

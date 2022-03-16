@@ -44,6 +44,7 @@ namespace Unity.FPS.UI
         public float AmmoFillMovementSharpness = 20f;
 
         public int WeaponCounterIndex { get; set; }
+        public float AmmoRatio = 0;
 
         PlayerWeaponsManager m_PlayerWeaponsManager;
         WeaponController m_Weapon;
@@ -83,6 +84,7 @@ namespace Unity.FPS.UI
         void Update()
         {
             float currenFillRatio = m_Weapon.CurrentAmmoRatio;
+            AmmoRatio = m_Weapon.CurrentAmmoRatio;
             AmmoFillImage.fillAmount = Mathf.Lerp(AmmoFillImage.fillAmount, currenFillRatio,
                 Time.deltaTime * AmmoFillMovementSharpness);
 
