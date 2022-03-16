@@ -346,6 +346,8 @@ namespace Unity.FPS.Gameplay
                     {
                         m_FootstepDistanceCounter = 0f;
                         AudioSource.PlayOneShot(FootstepSfx);
+                        GameFlowManager GameFlow = GameObject.FindObjectOfType<GameFlowManager>();
+                        GameFlow.footsteps += 1;
                     }
 
                     // keep track of distance traveled for footsteps sound

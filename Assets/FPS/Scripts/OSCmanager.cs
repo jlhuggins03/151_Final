@@ -38,6 +38,8 @@ public class OSCmanager : MonoBehaviour
         gunHeatValue = gameFlow.ammoRatio;
         bullets = gameFlow.bullets;
 
+        int bossfightTemp = bossfight;
+
         if (ET.AiState == EnemyTurret.AIState.Attack)
         {
             bossfight = 1;
@@ -49,7 +51,7 @@ public class OSCmanager : MonoBehaviour
 
         // Debug.Log("Heat Ratio: " + gunHeatValue);
         // Debug.Log("Bossfight: " + bossfight);
-        Debug.Log("Bullets: " + gameFlow.bullets);
+        // Debug.Log("Bullets: " + gameFlow.bullets);
 
 
 
@@ -70,13 +72,28 @@ public class OSCmanager : MonoBehaviour
         //*************
 
         // exporting OSC messages
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/heatValue", gunHeatValue);
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossFight", bossfight);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/heatValue", gunHeatValue * 1000f + 10f);
 
+        // send bossfight state when combat state changes
+        if(bossfight !=  bossfightTemp)
+        {
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossFight", bossfight);
+            Debug.Log("Bossfight: " + bossfight);
+        }
+
+        // send message when a bullet is fired
         if (gameFlow.bullets >= 1)
         {
             OSCHandler.Instance.SendMessageToClient("pd", "/unity/laserGun", 1);
             gameFlow.bullets -= 1;
+            Debug.Log("bullet");
+        }
+
+        if (gameFlow.footsteps >= 1)
+        {
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/footStep", 1);
+            gameFlow.footsteps -= 1;
+            Debug.Log("foostep");
         }
 
     }

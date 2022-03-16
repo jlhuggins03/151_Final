@@ -35,6 +35,7 @@ namespace Unity.FPS.Game
 
         public float ammoRatio = -1f;
         public int bullets = 0;
+        public int footsteps = 0;
 
         void Awake()
         {
