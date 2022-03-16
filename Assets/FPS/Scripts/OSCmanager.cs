@@ -67,7 +67,7 @@ public class OSCmanager : MonoBehaviour
 
         // exporting OSC messages
         OSCHandler.Instance.SendMessageToClient("pd", "/unity/heatValue", gunHeatValue);
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossfight", bossfight);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossFight", bossfight);
 
     }
 }
