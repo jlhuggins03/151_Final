@@ -13,7 +13,7 @@ public class OSCmanager : MonoBehaviour
 {
     // variables
     public float gunHeatValue = 0;
-    public bool bossfight = false;
+    public int bossfight = 0;
 
     public GameFlowManager gameFlow;
     public EnemyTurret ET;
@@ -38,10 +38,10 @@ public class OSCmanager : MonoBehaviour
 
         if (ET.AiState == EnemyTurret.AIState.Attack)
         {
-            bossfight = true;
+            bossfight = 1;
         } else
         {
-            bossfight = false;
+            bossfight = 0;
         }
 
         Debug.Log("Heat Ratio: " + gunHeatValue);
@@ -66,6 +66,8 @@ public class OSCmanager : MonoBehaviour
         //*************
 
         // exporting OSC messages
-        OSCHandler.Instance.SendMessageToClient("pd", "/unity/distance", 1);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/heatValue", gunHeatValue);
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossfight", bossfight);
+
     }
 }

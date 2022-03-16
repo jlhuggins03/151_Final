@@ -567,6 +567,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4008933581619590512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &832241699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1315839542190839936, guid: c996b53e9f849234393d1e90f68d1679,
+    type: 3}
+  m_PrefabInstance: {fileID: 4008933581619590512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832241691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1fea5cb3ddbc249bd0181e6766db68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &832241701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,8 +593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunHeatValue: 0
   bossfight: 0
-  Gun: {fileID: 0}
-  WeaponsManager: {fileID: 2729281214152228929}
+  gameFlow: {fileID: 832241699}
+  ET: {fileID: 1754045807}
 --- !u!4 &868929744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5035642871227140182, guid: a7566d85b04856b42a956c9b162ee747,
@@ -1251,6 +1263,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2729281214845312454}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1754045807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4234830436940505133, guid: e29d43f43cc5d82499dd9926e01847d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2729281213748808806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cb5371dba09ee46806cbe0c2aa2c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1771139419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3250,18 +3274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Id: b7ef103c-6e78-41af-8322-5ac95ed05882
---- !u!114 &2729281214152228929 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 298744117520805562, guid: 761cdc9e4e883334cbdcea062d0befa7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2729281214152228920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2729281214152228921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6b4f98e62f1d104f8658bba08e5d56f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2729281214182533258
 PrefabInstance:
   m_ObjectHideFlags: 0
