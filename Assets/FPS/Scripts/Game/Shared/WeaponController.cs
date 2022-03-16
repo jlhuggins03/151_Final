@@ -455,6 +455,13 @@ namespace Unity.FPS.Game
 
         void HandleShoot()
         {
+            // OSC queue bullet
+            if (this.gameObject.name == "Weapon_Blaster(Clone)")
+            {
+                GameFlow.bullets += 1;
+                // Debug.Log("Prefab ammo ratio: " + CurrentAmmoRatio);
+            }
+
             int bulletsPerShotFinal = ShootType == WeaponShootType.Charge
                 ? Mathf.CeilToInt(CurrentCharge * BulletsPerShot)
                 : BulletsPerShot;

@@ -79,6 +79,10 @@ namespace Unity.FPS.Gameplay
 
         new void OnShoot()
         {
+            // OSC stuff
+            // GameFlowManager GameFlow = GameObject.FindObjectOfType<GameFlowManager>();
+            // GameFlow.bullets += 1;
+
             m_ShootTime = Time.time;
             m_LastRootPosition = Root.position;
             m_Velocity = transform.forward * Speed;

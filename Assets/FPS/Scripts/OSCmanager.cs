@@ -14,6 +14,7 @@ public class OSCmanager : MonoBehaviour
     // variables
     public float gunHeatValue = 0;
     public int bossfight = 0;
+    public int bullets = 0;
 
     public GameFlowManager gameFlow;
     public EnemyTurret ET;
@@ -35,6 +36,7 @@ public class OSCmanager : MonoBehaviour
     {
         // variables to export
         gunHeatValue = gameFlow.ammoRatio;
+        bullets = gameFlow.bullets;
 
         if (ET.AiState == EnemyTurret.AIState.Attack)
         {
@@ -44,8 +46,10 @@ public class OSCmanager : MonoBehaviour
             bossfight = 0;
         }
 
-        Debug.Log("Heat Ratio: " + gunHeatValue);
-        Debug.Log("Bossfight: " + bossfight);
+
+        // Debug.Log("Heat Ratio: " + gunHeatValue);
+        // Debug.Log("Bossfight: " + bossfight);
+        Debug.Log("Bullets: " + gameFlow.bullets);
 
 
 
@@ -68,6 +72,12 @@ public class OSCmanager : MonoBehaviour
         // exporting OSC messages
         OSCHandler.Instance.SendMessageToClient("pd", "/unity/heatValue", gunHeatValue);
         OSCHandler.Instance.SendMessageToClient("pd", "/unity/bossFight", bossfight);
+
+        if (gameFlow.bullets >= 1)
+        {
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/laserGun", 1);
+            gameFlow.bullets -= 1;
+        }
 
     }
 }

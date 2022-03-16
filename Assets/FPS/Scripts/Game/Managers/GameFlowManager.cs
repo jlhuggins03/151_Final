@@ -34,6 +34,7 @@ namespace Unity.FPS.Game
         string m_SceneToLoad;
 
         public float ammoRatio = -1f;
+        public int bullets = 0;
 
         void Awake()
         {
